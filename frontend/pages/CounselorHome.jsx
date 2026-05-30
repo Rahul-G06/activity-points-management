@@ -173,9 +173,7 @@ function CounselorHome() {
                                     <td className="px-6 py-4 font-mono">{student.usn || "NOT SET"}</td>
                                     <td className="px-6 py-4">{student.branch || "N/A"}</td>
                                     <td className="px-6 py-4 text-center">
-                                        <span className="text-green-600 font-bold">{student.confirmedPoints || 0}</span>
-                                        <span className="mx-1 text-gray-400">/</span>
-                                        <span className="text-orange-500">{student.pendingPoints || 0}</span>
+                                        <span className="text-green-600 font-bold">{(student.confirmedPoints || 0) + (student.pendingPoints || 0)}</span>
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <span 

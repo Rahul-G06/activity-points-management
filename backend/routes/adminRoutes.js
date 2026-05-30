@@ -29,7 +29,7 @@ router.get("/students", isAuthenticated, isAdmin, async (req, res) => {
         }
 
         const students = await User.find(query)
-            .select('username email usn branch currentYear confirmedPoints pendingPoints')
+            .select('username email usn branch currentYear confirmedPoints pendingPoints counselorEmail')
             .sort({ username: 1 });
 
         res.status(200).json({
