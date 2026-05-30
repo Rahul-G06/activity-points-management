@@ -50,11 +50,17 @@ function CounselorHome() {
     const handleInputChange = (e) => {
         const value = e.target.value;
         setNewEmail(value);
+        
         if (value.length > 0) {
-            const matches = allUsers.filter(u => 
-                u.username?.toLowerCase().includes(value.toLowerCase()) || 
-                u.email?.toLowerCase().includes(value.toLowerCase())
-            );
+            const matches = allUsers.filter(u => {
+                // 1. Check if the user matches the search query
+                const matchesSearch = u.username?.toLowerCase().includes(value.toLowerCase()) || 
+                                    u.email?.toLowerCase().includes(value.toLowerCase());
+                const isUnassigned = !u.counselorEmail; 
+
+                return matchesSearch && isUnassigned;
+            });
+            
             setFilteredUsers(matches);
             setShowDropdown(true);
         } else {
